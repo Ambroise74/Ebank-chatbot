@@ -5,6 +5,7 @@ import com.example.ebankservice.service.EbankService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @SpringBootApplication
+@EnableFeignClients
 public class EbankServiceApplication {
 
     public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class EbankServiceApplication {
             // Liste de types de comptes
             List<String> types = List.of("CURRENT", "SAVING", "CURRENT");
 
-            // Liste de customerIds
+            // Liste de customerIdsg
             List<Long> customerIds = List.of(1L, 2L, 3L);
 
             // Liste de balances
