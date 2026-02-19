@@ -32,4 +32,10 @@ public class EbankRestController {
         return ebankService.saveBankAccount(bankAccount);
     }
 
+    @PutMapping("/account/{id}")  // 👈 ajouter cet endpoint
+    public BankAccount updateBankAccount(@PathVariable String id, @RequestBody BankAccount bankAccount) {
+        bankAccount.setId(id);
+        return ebankService.saveBankAccount(bankAccount);
+    }
+
 }
