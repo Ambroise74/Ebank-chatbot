@@ -10,11 +10,10 @@ import org.springframework.stereotype.Service;
     public class EbankAiAgent {
 
         private final ChatClient chatClient;
-
         // 👇 le nom du constructeur DOIT être identique au nom de la classe
         public EbankAiAgent(ChatClient.Builder builder, ChatMemory chatMemory, ToolCallbackProvider toolCallbackProvider) {
             this.chatClient = builder
-                    .defaultSystem("Tu es un assistant bancaire. Tu aides les utilisateurs avec leurs comptes et opérations bancaires.")
+                    .defaultSystem("Tu es un assistant bancaire. Tu aides les utilisateurs avec leurs comptes et opérations bancaires  en fonction du contexte fournie. si aucun contexte n'est fourni , repond avec JE NE SAIS PAS")
                     .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
                     .defaultToolCallbacks(toolCallbackProvider)
                     .build();

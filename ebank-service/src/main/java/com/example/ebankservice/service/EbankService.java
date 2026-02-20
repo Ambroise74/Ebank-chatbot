@@ -5,6 +5,8 @@ import com.example.ebankservice.feign.CustomersRestClient;
 import com.example.ebankservice.modele.Customer;
 import com.example.ebankservice.repository.BankAccountRepository;
 import feign.FeignException;
+import org.springaicommunity.mcp.annotation.McpTool;
+import org.springaicommunity.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,12 +23,13 @@ public class EbankService {
         this.bankAccountRepository = bankAccountRepository;
     }
 
-
+    @McpTool(description = "get all bank account")
     public List<BankAccount> getAllBankAccounts() {
         return bankAccountRepository.findAll();
      }
+    @McpTool(description = "get bank account by id")
 
-    public BankAccount getBankAccountById(String id) {
+    public BankAccount getBankAccountById( @McpToolParam(description = "account id") String id) {
         BankAccount bankAccount = bankAccountRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("BankAccount not found with id: " + id));
 
@@ -45,7 +48,7 @@ public class EbankService {
 
         return bankAccount;
     }
-
+    @McpTool(description = "save a new bank account (balance ,type, customer")
     public  BankAccount saveBankAccount(BankAccount bankAccount) {
         return bankAccountRepository.save(bankAccount);
     }

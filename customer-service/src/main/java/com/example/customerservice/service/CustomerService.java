@@ -27,4 +27,5 @@ public class CustomerService {
    public Customer SaveCustomer(@McpToolParam(description = "the customers(nom, email)") Customer customer) {
        return customerRepository.save(customer);
    }
+
 }
